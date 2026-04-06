@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ParallelSuite" parallel="tests" thread-count="2">
+
+    <test name="TestSet1">
+        <classes>
+            <class name="tests.GoogleTest1"/>
+        </classes>
+    </test>
+
+    <test name="TestSet2">
+        <classes>
+            <class name="tests.GoogleTest2"/>
+        </classes>
+    </test>
+
+</suite>
