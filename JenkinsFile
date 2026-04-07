@@ -1,22 +1,30 @@
 pipeline {
     agent any
 
-    stages {
+    tools {
+        // These names MUST match the "Name" field in Manage Jenkins > Tools
+        maven 'Maven3' 
+        jdk 'JDK22'
+    }
 
+    stages {
         stage('Build') {
             steps {
+                // 'bat' is for Windows; 'sh' is for Linux
                 bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
+                // This runs your test cases (JUnit/TestNG)
                 bat 'mvn test'
             }
         }
 
         stage('Report') {
             steps {
+                // Publishes the Extent Report to the Jenkins sidebar
                 publishHTML(target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
